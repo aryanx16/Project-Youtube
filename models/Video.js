@@ -4,6 +4,14 @@ const VideoSchema = new mongoose.Schema({
         _id:{
             type:mongoose.Schema.Types.ObjectId
         },
+        Title:{
+            type:String,
+            required:true,
+        },
+        Description:{
+            type:String,
+            required:true,
+        },
         UserId:{
             type:mongoose.Schema.Types.ObjectId,
             ref:"User",
@@ -12,7 +20,15 @@ const VideoSchema = new mongoose.Schema({
             type:String,
             required:true,
         },
+        VideoId:{
+            type:String,
+            required:true,
+        },
         ThumbailUrl:{
+            type:String,
+            required:true,
+        },
+        ThumbailId:{
             type:String,
             required:true,
         },
@@ -20,10 +36,7 @@ const VideoSchema = new mongoose.Schema({
             type:String,
             requried:true,
         },
-        Tags:{
-            type:String,
-            requried:true,
-        },
+        Tags:[{type:String}],
         Likes:{
             type:Number,
             default:0,
@@ -36,23 +49,18 @@ const VideoSchema = new mongoose.Schema({
             type:Number,
             default:0,
         },
-        LikedBy:{
+        LikedBy:[{
             type:mongoose.Schema.Types.ObjectId,
             ref:"User",
-        },
-        DislikedBy:{
+        }],
+        DislikedBy:[{
             type:mongoose.Schema.Types.ObjectId,
             ref:"User",
-        },
-        ViewedBy:{
+        }],
+        ViewedBy:[{
             type:mongoose.Schema.Types.ObjectId,
             ref:"User",
-        },
-        Timestamp:{
-            type:String,
-            required:true,
-        }
-        
-})
+        }],  
+},{timestamps:true})
 
 module.exports = mongoose.model("Video",VideoSchema)

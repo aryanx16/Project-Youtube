@@ -5,6 +5,7 @@ const bodyparser = require("body-parser")
 const fileUpload = require("express-fileupload")
 const {connectWdb} = require("./db")
 const userRouter = require("./Routes/User")
+const VideoRouter = require("./Routes/Video")
 require("dotenv").config()
 connectWdb();//DATABASE
 app.listen(3000,()=>{
@@ -17,6 +18,9 @@ app.use(fileUpload({
 }));
 //----------------USER MIDDLEWARE--------------
 app.use("/user",userRouter)
+//---------------------------------------------
+//----------------VIDEO MIDDLEWARE--------------
+app.use("/video",VideoRouter)
 //---------------------------------------------
 
 app.get("/",(req,res)=>{
